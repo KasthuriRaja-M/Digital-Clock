@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './DigitalClock.css';
 
 const DigitalClock = () => {
   const [time, setTime] = useState(new Date());
@@ -12,65 +11,73 @@ const DigitalClock = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const formatTime24 = (date) => {
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const seconds = date.getSeconds().toString().padStart(2, '0');
-    return `${hours}:${minutes}:${seconds}`;
-  };
+  // 24-hour format
+  const time24 = time.toLocaleTimeString('en-US', {
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  });
 
-  const formatTime12 = (date) => {
-    let hours = date.getHours();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const seconds = date.getSeconds().toString().padStart(2, '0');
-    return `${hours.toString().padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
-  };
+  // 12-hour format with AM/PM
+  const time12 = time.toLocaleTimeString('en-US', {
+    hour12: true,
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  });
 
-  const formatDate = (date) => {
-    return date.toLocaleDateString('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
+  // Full date
+  const dateString = time.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 
   return (
     <div style={{
       textAlign: 'center',
-      padding: '20px',
-      backgroundColor: '#1a1a1a',
+      padding: '30px',
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
       color: 'white',
-      borderRadius: '10px',
+      borderRadius: '15px',
       margin: '20px',
-      minWidth: '400px'
+      minWidth: '500px',
+      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+      border: '1px solid rgba(255, 255, 255, 0.1)'
     }}>
-      <h1 style={{ 
-        fontSize: '3.5rem', 
-        margin: '20px 0', 
+      {/* 24-hour time */}
+      <div style={{
+        fontSize: '4rem',
         fontFamily: 'monospace',
-        color: '#00ff88'
+        color: '#00ff88',
+        marginBottom: '10px',
+        textShadow: '0 0 20px rgba(0, 255, 136, 0.5)'
       }}>
-        {formatTime24(time)}
-      </h1>
-      <h2 style={{ 
-        fontSize: '2.5rem', 
-        margin: '15px 0', 
+        {time24}
+      </div>
+      
+      {/* 12-hour time with AM/PM */}
+      <div style={{
+        fontSize: '3rem',
         fontFamily: 'monospace',
-        color: '#ff6b6b'
+        color: '#ff6b6b',
+        marginBottom: '20px',
+        textShadow: '0 0 15px rgba(255, 107, 107, 0.5)'
       }}>
-        {formatTime12(time)}
-      </h2>
-      <p style={{ 
-        fontSize: '1.2rem', 
-        margin: '10px 0',
-        color: '#ffffff'
+        {time12}
+      </div>
+      
+      {/* Date */}
+      <div style={{
+        fontSize: '1.3rem',
+        color: '#ffffff',
+        opacity: 0.9,
+        fontFamily: 'Arial, sans-serif'
       }}>
-        {formatDate(time)}
-      </p>
+        {dateString}
+      </div>
     </div>
   );
 };
