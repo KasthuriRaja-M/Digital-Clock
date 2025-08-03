@@ -16,43 +16,33 @@ const DigitalClock = () => {
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
     const seconds = date.getSeconds().toString().padStart(2, '0');
-    return { hours, minutes, seconds };
+    return `${hours}:${minutes}:${seconds}`;
   };
 
   const formatDate = (date) => {
-    const options = { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    };
-    return date.toLocaleDateString('en-US', options);
+    return date.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   };
 
-  const { hours, minutes, seconds } = formatTime(time);
-  const dateString = formatDate(time);
-
   return (
-    <div className="digital-clock">
-      <div className="time-display">
-        <div className="time-segment">
-          <span className="time-value">{hours}</span>
-          <span className="time-label">Hours</span>
-        </div>
-        <div className="time-separator">:</div>
-        <div className="time-segment">
-          <span className="time-value">{minutes}</span>
-          <span className="time-label">Minutes</span>
-        </div>
-        <div className="time-separator">:</div>
-        <div className="time-segment">
-          <span className="time-value">{seconds}</span>
-          <span className="time-label">Seconds</span>
-        </div>
-      </div>
-      <div className="date-display">
-        {dateString}
-      </div>
+    <div style={{
+      textAlign: 'center',
+      padding: '20px',
+      backgroundColor: '#1a1a1a',
+      color: 'white',
+      borderRadius: '10px',
+      margin: '20px'
+    }}>
+      <h1 style={{ fontSize: '4rem', margin: '20px 0', fontFamily: 'monospace' }}>
+        {formatTime(time)}
+      </h1>
+      <p style={{ fontSize: '1.2rem', margin: '10px 0' }}>
+        {formatDate(time)}
+      </p>
     </div>
   );
 };
