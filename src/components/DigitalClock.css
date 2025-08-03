@@ -1,0 +1,117 @@
+.digital-clock {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 600px;
+}
+
+.time-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.time-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.time-value {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  font-family: 'Courier New', monospace;
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.time-value:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+.time-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.time-separator {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: bold;
+  margin: 0 0.5rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.date-display {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .digital-clock {
+    min-width: 90vw;
+    padding: 1.5rem 2rem;
+  }
+  
+  .time-value {
+    font-size: 2.5rem;
+  }
+  
+  .time-separator {
+    font-size: 2rem;
+  }
+  
+  .time-label {
+    font-size: 0.8rem;
+  }
+  
+  .date-display {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .digital-clock {
+    padding: 1rem 1.5rem;
+  }
+  
+  .time-value {
+    font-size: 2rem;
+  }
+  
+  .time-separator {
+    font-size: 1.5rem;
+  }
+  
+  .time-segment {
+    margin: 0 0.5rem;
+  }
+} 
