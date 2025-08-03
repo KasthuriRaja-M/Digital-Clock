@@ -37,46 +37,93 @@ const DigitalClock = () => {
 
   return (
     <div style={{
-      textAlign: 'center',
-      padding: '30px',
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
-      color: 'white',
-      borderRadius: '15px',
-      margin: '20px',
-      minWidth: '500px',
-      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-      border: '1px solid rgba(255, 255, 255, 0.1)'
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '20px',
+      padding: '20px'
     }}>
-      {/* 24-hour time */}
+      {/* 24-hour time box */}
       <div style={{
-        fontSize: '4rem',
-        fontFamily: 'monospace',
+        textAlign: 'center',
+        padding: '25px',
+        backgroundColor: 'rgba(0, 255, 136, 0.1)',
         color: '#00ff88',
-        marginBottom: '10px',
-        textShadow: '0 0 20px rgba(0, 255, 136, 0.5)'
+        borderRadius: '15px',
+        minWidth: '400px',
+        boxShadow: '0 8px 32px rgba(0, 255, 136, 0.2)',
+        border: '2px solid rgba(0, 255, 136, 0.3)',
+        backdropFilter: 'blur(10px)'
       }}>
-        {time24}
+        <div style={{
+          fontSize: '0.9rem',
+          marginBottom: '10px',
+          opacity: 0.8,
+          textTransform: 'uppercase',
+          letterSpacing: '2px'
+        }}>
+          24-Hour Format
+        </div>
+        <div style={{
+          fontSize: '3.5rem',
+          fontFamily: 'monospace',
+          fontWeight: 'bold',
+          textShadow: '0 0 20px rgba(0, 255, 136, 0.5)'
+        }}>
+          {time24}
+        </div>
       </div>
       
-      {/* 12-hour time with AM/PM */}
+      {/* 12-hour time box */}
       <div style={{
-        fontSize: '3rem',
-        fontFamily: 'monospace',
+        textAlign: 'center',
+        padding: '25px',
+        backgroundColor: 'rgba(255, 107, 107, 0.1)',
         color: '#ff6b6b',
-        marginBottom: '20px',
-        textShadow: '0 0 15px rgba(255, 107, 107, 0.5)'
+        borderRadius: '15px',
+        minWidth: '400px',
+        boxShadow: '0 8px 32px rgba(255, 107, 107, 0.2)',
+        border: '2px solid rgba(255, 107, 107, 0.3)',
+        backdropFilter: 'blur(10px)'
       }}>
-        {time12}
+        <div style={{
+          fontSize: '0.9rem',
+          marginBottom: '10px',
+          opacity: 0.8,
+          textTransform: 'uppercase',
+          letterSpacing: '2px'
+        }}>
+          12-Hour Format
+        </div>
+        <div style={{
+          fontSize: '3.5rem',
+          fontFamily: 'monospace',
+          fontWeight: 'bold',
+          textShadow: '0 0 20px rgba(255, 107, 107, 0.5)'
+        }}>
+          {time12}
+        </div>
       </div>
       
-      {/* Date */}
+      {/* Date box */}
       <div style={{
-        fontSize: '1.3rem',
+        textAlign: 'center',
+        padding: '20px',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
         color: '#ffffff',
-        opacity: 0.9,
-        fontFamily: 'Arial, sans-serif'
+        borderRadius: '15px',
+        minWidth: '400px',
+        boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1)',
+        border: '2px solid rgba(255, 255, 255, 0.2)',
+        backdropFilter: 'blur(10px)'
       }}>
-        {dateString}
+        <div style={{
+          fontSize: '1.3rem',
+          fontFamily: 'Arial, sans-serif',
+          opacity: 0.9
+        }}>
+          {dateString}
+        </div>
       </div>
     </div>
   );
